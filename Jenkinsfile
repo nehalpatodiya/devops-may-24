@@ -9,9 +9,6 @@ pipeline {
             steps {
                 echo 'Building Image'
                 docker build -t testapp:latest .
-                aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 111111111111.dkr.ecr.ap-south-1.amazonaws.com
-                docker tag testapp:latest 111111111111.dkr.ecr.ap-south-1.amazonaws.com/my-repository:latest
-                docker push 111111111111.dkr.ecr.ap-south-1.amazonaws.com/my-repository:latest
             }
         }
         stage('ECRPush') {
